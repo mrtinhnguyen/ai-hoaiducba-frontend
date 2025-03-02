@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function() {
         chatBody.innerHTML += `<div><strong>Bạn:</strong> ${message}</div>`;
         userInput.value = "";
 
-        fetch("https://chat.hoaiducba.org.vn/chat", {
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/chat`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ message: message })
