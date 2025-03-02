@@ -33,10 +33,19 @@ document.addEventListener("DOMContentLoaded", function() {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ message: message })
         })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Lỗi từ server: " + response.statusText);
+            }
+            return response.json();
+        })
         .then(data => {
-            chatBody.innerHTML += `<div><strong>Chatbot:</strong> ${data.reply}</div>`;
+            chatBody.innerHTML += `<div><strong>Trợ lý AI:</strong> ${data.reply}</div>`;
             chatBody.scrollTop = chatBody.scrollHeight;
+        })
+        .catch(error => {
+            console.error("Lỗi khi gửi tin nhắn:", error);
+            chatBody.innerHTML += `<div><strong>Trợ lý AI:</strong> Lỗi khi kết nối server!</div>`;
         });
     }
 });
