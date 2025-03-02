@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         fetch("https://ai-hoaiducba-backend.onrender.com/chat", {
             method: "POST",
+            mode: "cors",  // Bật chế độ CORS
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ message: message })
         })
