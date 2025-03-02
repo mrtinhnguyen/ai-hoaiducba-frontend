@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
         fetch("https://ai-hoaiducba-backend.onrender.com/chat", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ message: message })  // Đảm bảo dữ liệu JSON hợp lệ
+            body: JSON.stringify({ message })  // Đảm bảo dữ liệu JSON hợp lệ
         })
         .then(response => response.json())
         .then(data => {
