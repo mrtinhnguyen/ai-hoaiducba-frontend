@@ -10,7 +10,7 @@ function Chat() {
         const userMessage = { sender: "user", text: message };
         setChatHistory([...chatHistory, userMessage]);
 
-        const response = await fetch("http://localhost:8000/chat", {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/chat`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ message }),
