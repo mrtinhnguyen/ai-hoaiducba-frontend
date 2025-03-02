@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function() {
         chatBody.innerHTML += `<div><strong>Bạn:</strong> ${message}</div>`;
         userInput.value = "";
 
-        fetch(`${process.env.REACT_APP_BACKEND_URL}/chat`, {
+        fetch(`${process.env.REACT_APP_BACKEND_URL}chat`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ message: message })
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .catch(error => {
             console.error("Lỗi khi gửi tin nhắn:", error);
-            chatBody.innerHTML += `<div><strong>Trợ lý AI:</strong> Lỗi khi kết nối server!</div>`;
+            chatBody.innerHTML += `<div><strong>Trợ lý AI:</strong> Xin lỗi, tôi hiện đang trong quá trình học tập dữ liệu từ Ban chấp hành Hội, và sẽ cố gắng cung cấp câu trả lời tốt nhất cho bạn</div>`;
         });
     }
 });
