@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
             method: "POST",
             mode: "cors",  // Bật chế độ CORS
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ message: message })
+            body: JSON.stringify({ message: userInput.value })  // Đảm bảo JSON hợp lệ
         })
         .then(response => {
             if (!response.ok) {
@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoaded", function() {
             return response.json();
         })
         .then(data => {
+            console.log("📥 Phản hồi từ backend:", data);
             chatBody.innerHTML += `<div><strong>Trợ lý AI:</strong> ${data.reply}</div>`;
             chatBody.scrollTop = chatBody.scrollHeight;
         })
