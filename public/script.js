@@ -27,19 +27,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
         chatBody.innerHTML += `<div><strong>Bạn:</strong> ${message}</div>`;
         userInput.value = "";
+        console.log("Dữ liệu gửi đi:", message); // Debug
 
         fetch("https://ai-hoaiducba-backend.onrender.com/chat", {
             method: "POST",
-            mode: "cors",  // Bật chế độ CORS
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ message: userInput.value })  // Đảm bảo JSON hợp lệ
+            body: JSON.stringify({ message: message })  // Đảm bảo dữ liệu JSON hợp lệ
         })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Lỗi từ server: " + response.statusText);
-            }
-            return response.json();
-        })
+        .then(response => response.json())
         .then(data => {
             console.log("📥 Phản hồi từ backend:", data);
             chatBody.innerHTML += `<div><strong>Trợ lý AI:</strong> ${data.reply}</div>`;
